@@ -17,8 +17,9 @@ require 'faker'
   Transaction.create!(
     input_amount: Faker::Number.decimal(2),
     output_amount: Faker::Number.decimal(2),
-    input_currency: %(EUR USD KES INR).sample,
-    output_currency: %(EUR USD KES INR).sample,
+    input_currency: %i[EUR USD KES INR].sample,
+    output_currency: %i[EUR USD KES INR].sample,
+    transacted_at: Date.today,
     customer: customer
   )
 end

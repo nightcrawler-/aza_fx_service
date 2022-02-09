@@ -43,16 +43,40 @@ bundle exec rspec
 
 ### Sample Request (POSTMAN)
 
+```
+POST: /transactions
+```
+
 ```JSON
+{
+  "transaction": {
+    "customer_id": 3,
+    "input_amount": "81000.63",
+    "output_amount": "73280.84",
+    "input_currency": "EUR",
+    "output_currency": "KES",
+    "transacted_at": "2022-02-09"
+  }
+}
 
 ```
 
 ### Sample Response 
 
-
+```JSON
+{
+    "id": 21,
+    "customer_id": 3,
+    "input_amount": "81000.63",
+    "output_amount": "73280.84",
+    "input_currency": "EUR",
+    "output_currency": "KES",
+    "transacted_at": "2022-02-09",
+    "created_at": "2022-02-09T17:53:25.285Z",
+    "updated_at": "2022-02-09T17:53:25.285Z"
+}
+```
 ## Notes
-
-### Dependencies
 
 ### Assumptions/TODO/OTHER
 
