@@ -21,4 +21,8 @@ class Transaction < ApplicationRecord
   #### Validations
   validates :input_amount, :output_amount, :input_currency, :output_currency, :transacted_at, :customer,
             presence: true
+  validates :input_amount, :output_amount, numericality: { greater_than: 0 }
+
+  # TODO: Complete set of supported currencies, possibly from a config file, db records or something
+  validates :input_currency, :output_currency, inclusion: { in: %w[EUR USD KES INR] }
 end

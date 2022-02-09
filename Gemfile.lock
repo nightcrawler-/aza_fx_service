@@ -76,6 +76,7 @@ GEM
     connection_pool (2.2.5)
     crass (1.0.6)
     diff-lcs (1.5.0)
+    docile (1.4.0)
     e2mmap (0.1.0)
     erubi (1.10.0)
     ffi (1.15.5)
@@ -84,6 +85,7 @@ GEM
     i18n (1.9.1)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
+    json (2.6.1)
     kramdown (2.3.1)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -206,6 +208,11 @@ GEM
       sidekiq (>= 2.15)
     sidekiq-failures (1.0.1)
       sidekiq (>= 4.0.0)
+    simplecov (0.17.0)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     solargraph (0.44.3)
       backport (~> 1.2)
       benchmark
@@ -261,6 +268,7 @@ DEPENDENCIES
   sidekiq (~> 5.2.9)
   sidekiq-client-cli
   sidekiq-failures
+  simplecov (= 0.17)
   solargraph
   spring
   tzinfo-data

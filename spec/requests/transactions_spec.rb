@@ -23,12 +23,12 @@ RSpec.describe '/transactions', type: :request do
 
   let(:valid_attributes) do
     {
-        input_amount: 900.00,
-        input_currency: 'USD',
-        output_amount: 900.01,
-        output_currency: 'EUR',
-        customer_id: customer.id,
-        transacted_at: Date.today
+      input_amount: 900.00,
+      input_currency: 'USD',
+      output_amount: 900.01,
+      output_currency: 'EUR',
+      customer_id: customer.id,
+      transacted_at: Date.today
     }
   end
 
@@ -40,7 +40,8 @@ RSpec.describe '/transactions', type: :request do
       output_currency: 'KWAAAAICH',
       customer_id: 1,
       transacted_at: Date.today
-  }  end
+    }
+  end
 
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in

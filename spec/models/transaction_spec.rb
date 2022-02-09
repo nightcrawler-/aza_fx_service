@@ -28,6 +28,12 @@ RSpec.describe Transaction, type: :model do
     it { expect(subject).to validate_presence_of(:output_currency) }
     it { expect(subject).to validate_presence_of(:transacted_at) }
     it { expect(subject).to validate_presence_of(:customer) }
+
+    it { expect(subject).to validate_numericality_of(:input_amount).is_greater_than(0) }
+    it { expect(subject).to validate_numericality_of(:output_amount).is_greater_than(0) }
+
+    it { should validate_inclusion_of(:input_currency).in_array(%w[EUR USD KES INR]) }
+    it { should validate_inclusion_of(:output_currency).in_array(%w[EUR USD KES INR]) }
   end
 
   describe 'Associations' do

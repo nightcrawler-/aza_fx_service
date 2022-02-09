@@ -39,6 +39,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'shoulda-matchers'
+
+  # Code coverage -- statements on top, read docs
+  gem 'simplecov', '0.17'
 end
 
 group :development do

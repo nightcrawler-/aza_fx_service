@@ -1,24 +1,21 @@
-# README
+# aza_fx_service
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation and Running
 
-Things you may want to cover:
+- Dockerthings
+- Seeding: customers 1 - n
+- Testing rspec
+- Sample payload
 
-* Ruby version
+## Notes
 
-* System dependencies
+### Dependencies
 
-* Configuration
+### Assumptions/TODO/OTHER
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- fixed currencies: validate
+- Amounts: greater than 0, within a predefined range
+- transacted_at in addition to created at: assumes queued transactions from external system
+- namespace and version api
+- test coverage reports
+- 
