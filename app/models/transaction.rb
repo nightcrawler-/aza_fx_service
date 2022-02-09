@@ -23,6 +23,6 @@ class Transaction < ApplicationRecord
             presence: true
   validates :input_amount, :output_amount, numericality: { greater_than: 0 }
 
-  # TODO: Complete set of supported currencies, possibly from a config file, db records or something
+  # TODO: Complete set of supported currencies, possibly from a config file, db records or something, or use a gem?
   validates :input_currency, :output_currency, inclusion: { in: %w[EUR USD KES INR] }
 end

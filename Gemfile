@@ -32,6 +32,9 @@ gem 'sidekiq', '~> 5.2.9'
 gem 'sidekiq-client-cli'
 gem 'sidekiq-failures'
 
+# Get random names for your customers
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

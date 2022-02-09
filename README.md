@@ -5,7 +5,7 @@
 - Dockerthings
 - Seeding: customers 1 - n
 - Testing rspec
-- Sample payload
+- Sample payload - use customer numbers between 1-20, pre-seeded
 
 ## Notes
 
