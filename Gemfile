@@ -51,7 +51,7 @@ group :development do
   gem 'rubocop-rails', require: false
   #  Intellisense, diagnostics, inline documentation, and type checking
   gem 'solargraph'
-    # Will be helpful to generate ERD from models
+  # Will be helpful to generate ERD from models
   gem 'rails-erd'
 end
 
