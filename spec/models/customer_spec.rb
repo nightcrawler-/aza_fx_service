@@ -12,5 +12,15 @@
 require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject do
+    described_class.new
+  end
+
+  describe 'Validations' do
+    it { expect(subject).to validate_presence_of(:name) }
+  end
+
+  describe 'Associations' do
+    it { expect(subject).to have_many(:transactions) }
+  end
 end

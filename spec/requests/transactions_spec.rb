@@ -18,13 +18,29 @@ RSpec.describe '/transactions', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Transaction. As you add validations to Transaction, be sure to
   # adjust the attributes here as well.
+
+  let(:customer) { Customer.create!(name: 'Lizzy Caplan') }
+
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+        input_amount: 900.00,
+        input_currency: 'USD',
+        output_amount: 900.01,
+        output_currency: 'EUR',
+        customer_id: customer.id,
+        transacted_at: Date.today
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
-  end
+    {
+      input_amount: 900.00,
+      input_currency: 'USD',
+      output_amount: 0,
+      output_currency: 'KWAAAAICH',
+      customer_id: 1,
+      transacted_at: Date.today
+  }  end
 
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in
@@ -63,7 +79,7 @@ RSpec.describe '/transactions', type: :request do
         post transactions_url,
              params: { transaction: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
-        expect(response.content_type).to match(a_string_including('application/json'))
+        expect(response.content_type).to match(a_string_including('application/json; charset=utf-8'))
       end
     end
 
@@ -79,51 +95,8 @@ RSpec.describe '/transactions', type: :request do
         post transactions_url,
              params: { transaction: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq('application/json')
+        expect(response.content_type).to eq('application/json; charset=utf-8')
       end
-    end
-  end
-
-  describe 'PATCH /update' do
-    context 'with valid parameters' do
-      let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
-      end
-
-      it 'updates the requested transaction' do
-        transaction = Transaction.create! valid_attributes
-        patch transaction_url(transaction),
-              params: { transaction: new_attributes }, headers: valid_headers, as: :json
-        transaction.reload
-        skip('Add assertions for updated state')
-      end
-
-      it 'renders a JSON response with the transaction' do
-        transaction = Transaction.create! valid_attributes
-        patch transaction_url(transaction),
-              params: { transaction: new_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:ok)
-        expect(response.content_type).to match(a_string_including('application/json'))
-      end
-    end
-
-    context 'with invalid parameters' do
-      it 'renders a JSON response with errors for the transaction' do
-        transaction = Transaction.create! valid_attributes
-        patch transaction_url(transaction),
-              params: { transaction: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq('application/json')
-      end
-    end
-  end
-
-  describe 'DELETE /destroy' do
-    it 'destroys the requested transaction' do
-      transaction = Transaction.create! valid_attributes
-      expect do
-        delete transaction_url(transaction), headers: valid_headers, as: :json
-      end.to change(Transaction, :count).by(-1)
     end
   end
 end

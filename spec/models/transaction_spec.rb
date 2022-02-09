@@ -17,5 +17,20 @@
 require 'rails_helper'
 
 RSpec.describe Transaction, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject do
+    described_class.new
+  end
+
+  describe 'Validations' do
+    it { expect(subject).to validate_presence_of(:input_amount) }
+    it { expect(subject).to validate_presence_of(:input_currency) }
+    it { expect(subject).to validate_presence_of(:output_amount) }
+    it { expect(subject).to validate_presence_of(:output_currency) }
+    it { expect(subject).to validate_presence_of(:transacted_at) }
+    it { expect(subject).to validate_presence_of(:customer) }
+  end
+
+  describe 'Associations' do
+    it { expect(subject).to belong_to(:customer) }
+  end
 end
