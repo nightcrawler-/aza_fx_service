@@ -9,6 +9,7 @@
 #  input_currency  :string
 #  output_amount   :decimal(10, 2)
 #  output_currency :string
+#  status          :string
 #  transacted_at   :date
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

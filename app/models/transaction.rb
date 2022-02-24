@@ -9,12 +9,17 @@
 #  input_currency  :string
 #  output_amount   :decimal(10, 2)
 #  output_currency :string
+#  status          :string
 #  transacted_at   :date
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  customer_id     :bigint
 #
 class Transaction < ApplicationRecord
+  include AASM
+
+  aasm :column => 'status' do
+  end
   #### Associations
   belongs_to :customer
 
@@ -25,4 +30,11 @@ class Transaction < ApplicationRecord
 
   # TODO: Complete set of supported currencies, possibly from a config file, db records or something, or use a gem?
   validates :input_currency, :output_currency, inclusion: { in: %w[EUR USD KES INR] }
+
+  aasm do
+    state :pending, initial: true
+    state :processing
+    state :completed
+    state :failed
+  end
 end

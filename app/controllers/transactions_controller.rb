@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: %i[show]
+  before_action :set_transaction, only: %i[show update destroy]
 
   # GET /transactions
   def index
@@ -21,6 +21,15 @@ class TransactionsController < ApplicationController
 
     if @transaction.save
       render json: @transaction, status: :created, location: @transaction
+    else
+      render json: @transaction.errors, status: :unprocessable_entity
+    end
+  end
+
+  # Update
+  def update
+    if @transaction.update(transaction_params)
+      render json: @transaction, status: :ok, location: @transaction
     else
       render json: @transaction.errors, status: :unprocessable_entity
     end
