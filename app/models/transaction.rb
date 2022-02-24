@@ -19,6 +19,10 @@ class Transaction < ApplicationRecord
   include AASM
 
   aasm :column => 'status' do
+    state :pending, initial: true
+    state :processing
+    state :completed
+    state :failed
   end
   #### Associations
   belongs_to :customer
@@ -31,10 +35,4 @@ class Transaction < ApplicationRecord
   # TODO: Complete set of supported currencies, possibly from a config file, db records or something, or use a gem?
   validates :input_currency, :output_currency, inclusion: { in: %w[EUR USD KES INR] }
 
-  aasm do
-    state :pending, initial: true
-    state :processing
-    state :completed
-    state :failed
-  end
 end
