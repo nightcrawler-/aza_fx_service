@@ -100,4 +100,20 @@ RSpec.describe '/transactions', type: :request do
       end
     end
   end
+
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
+      let(:new_attributes) do
+        { input_currency: 'USD', customer_id: customer.id, input_amount: 9000.0, output_amount: 900, transacted_at: '2022-02-09'}
+      end
+
+      it 'updates the requested transcation' do
+        transaction = Transaction.create! valid_attributes
+        patch transaction_url(transaction), params: { transaction: new_attributes }
+        transaction.reload
+        expect(transaction.input_amount).to eq(9000.0)
+      end
+
+    end
+  end
 end
